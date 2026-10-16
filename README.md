@@ -1,36 +1,23 @@
 # Higher-Ed Model Validation Notes
 
-Short technical notes for explaining model validation concepts in higher-education analytics.
+Practitioner notes on validating predictive models in higher education — where the data is longitudinal, the stakes are student outcomes, and the most common failure mode is **leakage through time**.
 
-This project is designed to help bridge technical model review and stakeholder communication.
+These notes are written from the perspective of an institutional research analyst who has to defend a model to a provost, not just to a cross-validation score.
 
-## Planned Topics
+## Contents
 
-| Topic | Question answered |
-| --- | --- |
-| Temporal validation | Does the model generalize from prior cohorts to newer cohorts? |
-| Data leakage | Is future information accidentally included in training? |
-| Precision and recall | What tradeoff exists between false positives and missed students? |
-| Calibration | Can predicted probabilities be interpreted responsibly? |
-| Threshold selection | How do model thresholds affect advising workload? |
-| Subgroup review | Does performance differ across student groups? |
-| Intervention tracking | Do outreach actions improve outcomes? |
+| Note | Topic |
+|---|---|
+| `temporal_validation.md` | Train/validate/test splits across terms, leakage examples, precision/recall tradeoffs, threshold selection. The core methodology. |
+| `leakage_examples.md` | A catalog of real-world leakage patterns in student-success modeling — what they look like and how to catch them. |
 
-## Writing Standard
+## Key positions
 
-Each note should include:
+1. **Random k-fold CV is wrong for student data.** Terms are not exchangeable. Validate forward in time or your performance estimates are fiction.
+2. **Leakage is the default, not the exception.** Cumulative GPA, "ever" flags, and post-outcome features leak constantly. Assume guilt until proven innocent.
+3. **Thresholds are policy decisions.** A risk model's cutoff decides who gets an advisor's limited hours. Precision/recall is an ethics conversation, not just a metric.
+4. **Validate the deployment, not the lab.** Population stability, calibration drift, and subgroup performance matter more than a third decimal of AUC.
 
-- plain-language definition
-- higher-education example
-- technical interpretation
-- stakeholder implication
-- responsible-use caution
+## Scope
 
-## Status
-
-Starter project. Next steps:
-
-1. Add first note on temporal validation.
-2. Add first note on precision/recall.
-3. Add simple visual examples using synthetic data.
-
+Notes, not a library. No code here trains models — the companion repos (`higher-ed-retention-dashboard-demo`, `student-success-data-quality-checks`) carry the data and QA side. All examples use synthetic scenarios.

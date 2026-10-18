@@ -20,4 +20,4 @@ These notes are written from the perspective of an institutional research analys
 
 ## Scope
 
-Notes, not a library. No code here trains models — the companion repos (`higher-ed-retention-dashboard-demo`, `student-success-data-quality-checks`) carry the data and QA side. All examples use synthetic scenarios.
+Notes, not a library. No code here trains models — the companion repo (`higher-ed-retention-dashboard-demo`) carries the data and QA side. All examples use synthetic scenarios.
